@@ -15,9 +15,14 @@ pipeline {
 
         stage('Terraform Init & Apply') {
             steps {
-                dir("${TF_DIR}") {
-                    sh 'terraform init'
-                    sh 'terraform apply -auto-approve'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds' // <-- Make sure this ID matches your Jenkins credentials ID
+                ]]) {
+                    dir("${TF_DIR}") {
+                        sh 'terraform init'
+                        sh 'terraform apply -auto-approve'
+                    }
                 }
             }
         }
