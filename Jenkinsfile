@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/afarhan5/grafana-oneclick-infra.git'
+                git branch: 'main', url: 'https://github.com/afarhan5/grafana-oneclick-infra.git'
             }
         }
 
