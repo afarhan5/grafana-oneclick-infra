@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_security_group" "grafana_sg" {
-  name        = "grafana_sg"
+  name        = "grafana_sg1"
   description = "Allow SSH and Grafana"
 
   ingress {
